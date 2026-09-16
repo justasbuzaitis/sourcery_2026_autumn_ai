@@ -1,12 +1,9 @@
-max-tokens: 2048
-thinking-level: off
-
 customModels:
   qwen-local:
     name: Local Qwen 1.7B
     baseUrl: http://localhost:12434/engines/v1
     apiModelName: hf.co/Qwen/Qwen3-1.7B-GGUF:Q8_0
-    reasoning: false
+    reasoning: true
     temperature: true
     limit:
       context: 8192
