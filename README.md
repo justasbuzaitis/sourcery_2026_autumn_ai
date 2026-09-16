@@ -34,3 +34,23 @@
    node --version
    npm --version
    ```
+
+## Branch commands
+
+Push practice branches one by one:
+
+```sh
+git push --set-upstream origin practice-1
+git push --set-upstream origin practice-2
+git push --set-upstream origin practice-3
+git push --set-upstream origin practice-4
+```
+
+Update downstream branches after changing an earlier branch:
+
+```sh
+git rebase main practice-1
+git rebase practice-1 practice-2
+git rebase practice-2 practice-3
+git rebase practice-3 practice-4
+```
