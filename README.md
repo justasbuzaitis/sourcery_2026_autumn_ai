@@ -34,19 +34,3 @@
    node --version
    npm --version
    ```
-
-## Practice blocks
-
-Each practice block is available on its own branch:
-
-1. [Run an LLM locally](https://github.com/justasbuzaitis/sourcery_2026_autumn_ai/tree/practice-1/practice_block_1)
-2. [Prompting techniques](https://github.com/justasbuzaitis/sourcery_2026_autumn_ai/tree/practice-2/practice_block_2)
-3. [Test MCP](https://github.com/justasbuzaitis/sourcery_2026_autumn_ai/tree/practice-3/practice_block_3)
-4. [Experiment with skills](https://github.com/justasbuzaitis/sourcery_2026_autumn_ai/tree/practice-4/practice_block_4)
-
-To open a practice block, replace `1` with its number:
-
-```sh
-git fetch origin
-git switch --track origin/practice-1
-```
