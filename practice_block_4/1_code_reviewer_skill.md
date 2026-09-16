@@ -63,7 +63,7 @@ async function getUser(userId) {
 ```
 
 ```sh
-kit --model custom/qwen-local --no-skills
+kit --model custom/qwen-local --no-skills --no-core-tools
 ```
 
 Ask the question and save the answer. Exit Kit.
@@ -71,7 +71,7 @@ Ask the question and save the answer. Exit Kit.
 ## 4. Review with the skill
 
 ```sh
-kit --model custom/qwen-local
+kit --model custom/qwen-local --no-core-tools
 ```
 
 Activate the skill:
@@ -86,14 +86,20 @@ Ask the same question and save the answer.
 
 Result without skill:
 
-```
-RESULT WITHOUT SKILL
+```text
+1. SQL injection: `userId` is inserted directly into SQL. Use a parameterized query.
+2. Input validation: validate `userId` before querying.
+3. Error handling: handle database query failures.
 ```
 
 ---
 
 Result with skill:
 
+```text
+**[Low] SQL injection** — Raw interpolation of `userId` is unsafe. Use a parameterized query.
+
+**[Low] Missing error handling** — A failed query rejects the function without context. Handle or propagate the database error explicitly.
 ```
-RESULT WITH SKILL
-```
+
+The skill made the response shorter and gave each finding a severity and fix. The model incorrectly marked SQL injection as **Low**; it should be **High**.
