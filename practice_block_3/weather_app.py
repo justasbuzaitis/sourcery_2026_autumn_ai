@@ -4,9 +4,7 @@ mcp = FastMCP("Weather MCP")
 
 @mcp.tool()
 def get_weather(city: str) -> str:
-    weather = {
-        "Kaunas": "15°C and cloudy",
-    }
+    weather = {}
     return weather.get(city, "Unknown city")
 
 
