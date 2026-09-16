@@ -1,0 +1,10 @@
+services:
+  qwen:
+    provider:
+      type: model
+      options:
+        model: hf.co/Qwen/Qwen3-1.7B-GGUF:Q8_0
+
+  weather:
+    build: .
+    stdin_open: true
