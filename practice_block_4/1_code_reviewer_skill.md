@@ -8,7 +8,7 @@ Create this directory:
 .agents/skills/code-reviewer
 ```
 
-Inside it, create `SKILL.md` manually in your code editor. Do not use Kit to create or edit the skill. Paste this minimal template:
+Inside it, create `SKILL.md` manually in your code editor. Do not use Kit to create or edit the skill. Paste this minimal skill:
 
 ```md
 ---
@@ -18,14 +18,22 @@ description: Review code for bugs, security issues, and maintainability problems
 
 # Code reviewer
 
-[Write your review instructions here.]
+Review the provided code and report only concrete issues.
+
+Output:
+- **High** — serious security/correctness issue
+- **Medium** — meaningful reliability/maintainability issue
+- **Low** — minor quality/style issue
+
+For each issue:
+**[Severity] Title** — short explanation + suggested fix.
+
+Rules:
+- Explain the impact, not just the rule being violated.
+- Avoid praise, summaries, and generic advice.
+- Be concise. Keep each finding to 1–2 sentences.
+- Suggest the smallest practical fix.
 ```
-
-Replace the placeholder with instructions that define:
-
-- what the reviewer must check;
-- how findings should be prioritized;
-- what output format it should use.
 
 ## 2. Validate the skill
 
