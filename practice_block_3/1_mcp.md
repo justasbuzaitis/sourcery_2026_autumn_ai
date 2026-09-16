@@ -24,6 +24,12 @@ What is the current weather in Kaunas? Use an available tool and do not guess.
 
 Kit cannot answer because it does not have a weather tool.
 
+Result:
+
+```text
+I don't have access to real-time weather data or external APIs.
+```
+
 ## 3. Add weather data
 
 In `weather_app.py`, add Kaunas to the `weather` dictionary:
@@ -65,4 +71,10 @@ Ask the same question:
 
 ```text
 What is the current weather in Kaunas? Use an available tool and do not guess.
+```
+
+Result:
+
+```text
+The current weather in Kaunas is Sunny.
 ```

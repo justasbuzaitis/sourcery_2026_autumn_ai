@@ -8,3 +8,9 @@ customModels:
     limit:
       context: 8192
       output: 2048
+
+mcpServers:
+  weather:
+    type: local
+    command: ["docker", "compose", "run", "--build", "--rm", "-T", "weather"]
+    allowedTools: ["get_weather"]
