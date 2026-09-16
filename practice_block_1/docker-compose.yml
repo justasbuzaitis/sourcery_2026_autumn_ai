@@ -1,0 +1,6 @@
+services:
+  qwen:
+    provider:
+      type: model
+      options:
+        model: hf.co/Qwen/Qwen3-1.7B-GGUF:Q8_0
