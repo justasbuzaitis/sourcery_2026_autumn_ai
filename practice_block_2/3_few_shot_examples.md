@@ -5,17 +5,17 @@ Add two or three example questions and desired answers before the original quest
 ## Rewritten prompt
 
 ```text
-Use these examples to review the final PostgreSQL code.
+The examples only demonstrate the answer style and severity levels. Identify the final code's issues independently.
 
 Example 1
-Code: const query = `SELECT * FROM users WHERE id = ${id}`;
-Answer: High: SQL injection. Use db.query("SELECT * FROM users WHERE id = $1", [id]).
+Code: const apiKey = "production-secret";
+Answer: High: a secret is stored in source code. Read it from an environment variable.
 
 Example 2
-Code: console.log("User loaded:", user);
-Answer: Medium: user data may be sensitive. Remove the log or log only a safe identifier.
+Code: const config = JSON.parse(input);
+Answer: Medium: malformed input can crash the request. Validate the input and handle the parsing error.
 
-Review in the same concise style:
+Review the final PostgreSQL code in the same concise style. Report every concrete issue you find:
 
 async function getUser(userId) {
     const query = `SELECT * FROM users WHERE id = ${userId}`;
@@ -30,6 +30,4 @@ async function getUser(userId) {
 
 ## Response
 
-High: SQL injection. Use `db.query("SELECT * FROM users WHERE id = $1", [userId])`.
-
-Medium: sensitive data may be exposed. Remove the log or log only a safe identifier.
+**High: SQL injection.** `userId` is inserted directly into the query. Use `db.query("SELECT * FROM users WHERE id = $1", [userId])`.
