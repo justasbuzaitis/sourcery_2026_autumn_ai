@@ -7,4 +7,5 @@ services:
 
   weather:
     build: .
-    stdin_open: true
+    ports:
+      - "8000:8000"

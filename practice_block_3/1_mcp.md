@@ -31,14 +31,17 @@ Add the server to `.kit.yml`:
 ```yaml
 mcpServers:
   weather:
-    type: local
-    command: ["docker", "compose", "run", "--build", "--rm", "-T", "weather"]
+    type: remote
+    url: http://localhost:8000/mcp
+    noOAuth: true
     allowedTools: ["get_weather"]
 ```
 
-- `--build` rebuilds the image before starting the server.
-- `--rm` removes the stopped server container.
-- `-T` disables the terminal interface because MCP communicates through standard input and output.
+Build and start the server:
+
+```sh
+docker compose up --build -d weather
+```
 
 Exit and restart Kit:
 
