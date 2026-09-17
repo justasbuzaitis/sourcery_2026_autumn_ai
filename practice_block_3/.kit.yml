@@ -11,6 +11,7 @@ customModels:
 
 mcpServers:
   weather:
-    type: local
-    command: ["docker", "compose", "run", "--build", "--rm", "-T", "weather"]
+    type: remote
+    url: http://localhost:8000/mcp
+    noOAuth: true
     allowedTools: ["get_weather"]
