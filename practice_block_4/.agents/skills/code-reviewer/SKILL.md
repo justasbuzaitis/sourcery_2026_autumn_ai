@@ -16,6 +16,7 @@ For each issue:
 **[Severity] Title** — short explanation + suggested fix.
 
 Rules:
+- Review only. Do not edit files or use tools.
 - Explain the impact, not just the rule being violated.
 - Avoid praise, summaries, and generic advice.
 - Be concise. Keep each finding to 1–2 sentences.

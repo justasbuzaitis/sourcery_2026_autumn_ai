@@ -29,6 +29,7 @@ For each issue:
 **[Severity] Title** — short explanation + suggested fix.
 
 Rules:
+- Review only. Do not edit files or use tools.
 - Explain the impact, not just the rule being violated.
 - Avoid praise, summaries, and generic advice.
 - Be concise. Keep each finding to 1–2 sentences.
@@ -63,7 +64,7 @@ async function getUser(userId) {
 ```
 
 ```sh
-kit --model custom/qwen-local --no-skills --no-core-tools
+kit --model custom/qwen-local --no-skills
 ```
 
 Ask the question and save the answer. Exit Kit.
@@ -71,7 +72,7 @@ Ask the question and save the answer. Exit Kit.
 ## 4. Review with the skill
 
 ```sh
-kit --model custom/qwen-local --no-core-tools
+kit --model custom/qwen-local
 ```
 
 Activate the skill:
@@ -88,8 +89,8 @@ Result without skill:
 
 ```text
 1. SQL injection: `userId` is inserted directly into SQL. Use a parameterized query.
-2. Input validation: validate `userId` before querying.
-3. Error handling: handle database query failures.
+2. Sensitive logging: the complete user row may be written to production logs.
+3. Error handling: database query failures are not handled.
 ```
 
 ---
@@ -97,9 +98,7 @@ Result without skill:
 Result with skill:
 
 ```text
-**[Low] SQL injection** — Raw interpolation of `userId` is unsafe. Use a parameterized query.
-
-**[Low] Missing error handling** — A failed query rejects the function without context. Handle or propagate the database error explicitly.
+The function is vulnerable to SQL injection because `userId` is inserted directly into the query. Use a parameterized query.
 ```
 
-The skill made the response shorter and gave each finding a severity and fix. The model incorrectly marked SQL injection as **Low**; it should be **High**.
+The skill response was shorter, but the model ignored the requested severity format and suggested `?` as the placeholder. PostgreSQL uses `$1`.
