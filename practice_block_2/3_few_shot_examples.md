@@ -15,7 +15,7 @@ Example 2
 Code: const config = JSON.parse(input);
 Answer: Medium: malformed input can crash the request. Validate the input and handle the parsing error.
 
-Review the final PostgreSQL code in the same concise style. Report every concrete issue you find:
+Review the code in the same concise style. Report every concrete issue you find:
 
 async function getUser(userId) {
     const query = `SELECT * FROM users WHERE id = ${userId}`;
@@ -30,4 +30,4 @@ async function getUser(userId) {
 
 ## Response
 
-**High: SQL injection.** `userId` is inserted directly into the query. Use `db.query("SELECT * FROM users WHERE id = $1", [userId])`.
+High: user ID is not validated, leading to potential SQL injection. The query uses a string interpolation with `${userId}` without checking if the input is a valid integer, which could allow malicious input to be executed as SQL code.
