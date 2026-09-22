@@ -23,5 +23,7 @@ async function getUser(userId) {
 
 ## Response
 
-**High — SQL injection:** An attacker can change the query and access or modify data.
-Use `db.query("SELECT * FROM users WHERE id = $1", [userId])`.
+Severity: High  
+Impact: SQL injection vulnerability allows attackers to execute arbitrary SQL code.  
+Fix: Use parameterized queries instead of string interpolation.  
+Example: `db.query('SELECT * FROM users WHERE id = $1', [userId]);`

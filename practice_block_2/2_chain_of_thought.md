@@ -21,6 +21,21 @@ async function getUser(userId) {
 
 ## Response
 
-1. **Security:** String interpolation allows SQL injection. Use `$1` and pass `[userId]`.
-2. **Correctness:** Multiple rows would be reduced to the first result. Enforce a unique ID or add `LIMIT 1`.
-3. **Maintainability:** Move query execution into a small helper.
+**Security:**  
+- Use parameterized queries to prevent SQL injection. Replace `id = ${userId}` with `id = $1` and pass `userId` as a parameter.  
+- Example: `db.query('SELECT * FROM users WHERE id = $1', [userId])`.
+
+**Correctness:**  
+- Ensure the query fetches the correct user (e.g., use `WHERE id = $1` for unique IDs).  
+- Validate that the query returns exactly one row (e.g., use `LIMIT 1` if multiple rows might exist).  
+- Handle edge cases like duplicate IDs or non-existent users gracefully.
+
+**Maintainability:**  
+- Refactor the query to use a more readable structure (e.g., `SELECT * FROM users WHERE id = $1`).  
+- Avoid inline string interpolation and use a library like `pg` for prepared statements.  
+- Add comments or documentation for clarity.
+
+**Fixes:**  
+1. Replace inline SQL with parameterized query (`id = $1`).  
+2. Use `LIMIT 1` to ensure single result (if needed).  
+3. Refactor code to use a library like `pg` for prepared statements.
