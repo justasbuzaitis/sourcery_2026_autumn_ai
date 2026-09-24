@@ -24,7 +24,17 @@ What is the current weather in Kaunas? Use an available tool and do not guess.
 
 Kit cannot answer because it does not have a weather tool.
 
-## 3. Add the weather MCP server
+## 3. Add weather data
+
+In `weather_app.py`, add Kaunas to the `weather` dictionary:
+
+```python
+weather = {
+    "Kaunas": "Sunny",
+}
+```
+
+## 4. Add the weather MCP server
 
 Add the server to `.kit.yml`:
 
@@ -49,7 +59,7 @@ Exit and restart Kit:
 kit --model custom/qwen-local
 ```
 
-## 4. Ask again
+## 5. Ask again
 
 Ask the same question:
 
