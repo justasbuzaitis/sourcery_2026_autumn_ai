@@ -37,7 +37,7 @@
 
 ## Model hangs or runs out of memory
 
-Use the smaller Q4 model, reduce its context size, and run it on the CPU:
+Reduce its context size, and run it on the CPU:
 
 ```sh
 docker model configure --context-size 4000 hf.co/Qwen/Qwen3-1.7B-GGUF:Q8_0 -- --n-gpu-layers 0
