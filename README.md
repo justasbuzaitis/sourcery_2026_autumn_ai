@@ -40,7 +40,5 @@
 Use the smaller Q4 model, reduce its context size, and run it on the CPU:
 
 ```sh
-docker model pull hf.co/ggml-org/Qwen3-1.7B-GGUF:Q4_K_M
-docker model configure --context-size 1024 hf.co/ggml-org/Qwen3-1.7B-GGUF:Q4_K_M -- --n-gpu-layers 0
-docker model run hf.co/ggml-org/Qwen3-1.7B-GGUF:Q4_K_M
+docker model configure --context-size 4000 hf.co/Qwen/Qwen3-1.7B-GGUF:Q8_0 -- --n-gpu-layers 0
 ```
